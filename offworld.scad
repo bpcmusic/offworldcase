@@ -106,7 +106,7 @@ module top() {
                 triangle(3);
         
     }
-    
+    /*
     // protruding post guides   
     translate([ holeFromSide + holeRadius, pcbY - holeRadius - holeFromTop, pcbZ + caseGap ])
         difference(){
@@ -119,7 +119,7 @@ module top() {
             cylinder(topZ - pcbZ - caseGap, holeRadius + (caseGap * 8), holeRadius + (caseGap * 8));
             cylinder(topZ - pcbZ - caseGap, holeRadius + caseGap, holeRadius - caseGap);
         }
-
+    */
 
 }
 
