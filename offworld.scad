@@ -59,7 +59,7 @@ module top() {
             roundedRect( [ pcbX + (caseWG * 2), pcbY + (caseWG * 2), topZ ], caseRounding );   
         
         translate([-caseGap, -caseGap, -caseGap])
-        union(){
+            union(){
                  // USB 1
                 translate([ (pcbX - usb1X) / 2, (pcbY - usb1Y) + .67 - caseWG, -usb1Drop ])
                     cube([ usb1X + (caseGap * 2), (usb1Y * 2) + (caseGap * 2), usb1Z + (caseGap * 2) ]);
@@ -68,13 +68,13 @@ module top() {
                 translate([ (pcbX - usb1Opening) / 2, (pcbY - usb1TopHole) + .67 , -usb1Drop ])
                     cube([ usb1Opening + (caseGap * 2), (usb1Y * 2) + (caseGap * 2), usb1Z + (caseGap * 2) + usb2PlugZAdjust ]);
 
-    // USB 2
-    translate([ usb2Inset, -caseWG * 2, pcbZ ])
-        cube([ usb2X + (caseGap * 2), usb2Y + (caseGap * 3) + (caseWG * 3), usb2Z + (caseGap * 2) ]);
+                // USB 2
+                translate([ usb2Inset, -caseWG * 2, pcbZ ])
+                    cube([ usb2X + (caseGap * 2), usb2Y + (caseGap * 3) + (caseWG * 3), usb2Z + (caseGap * 2) ]);
 
-    translate([ pcbX - usb2Inset - usb2X, -caseWG * 2, pcbZ ])
-        cube([ usb2X + (caseGap * 2), usb2Y + (caseGap * 3) + (caseWG * 3), usb2Z + (caseGap * 2) ]);   
-            
+                translate([ pcbX - usb2Inset - usb2X, -caseWG * 2, pcbZ ])
+                    cube([ usb2X + (caseGap * 2), usb2Y + (caseGap * 3) + (caseWG * 3), usb2Z + (caseGap * 2) ]);   
+                
                 // USB 2 Hole
                 translate([ usb2Inset - usb2PlugWAdjust, -caseWG * 2, pcbZ - usb2PlugZAdjust ])
                     cube([ usb2X + (caseGap * 2) + (usb2PlugWAdjust * 2), caseWG + (caseGap * 2), usb2Z + (caseGap * 2) + (usb2PlugZAdjust * 2) ]);
@@ -82,22 +82,20 @@ module top() {
                 translate([ pcbX - usb2Inset - usb2X - usb2PlugWAdjust, -caseWG * 2, pcbZ - usb2PlugZAdjust ])
                     cube([ usb2X + (caseGap * 2) + (usb2PlugWAdjust * 2), caseWG + (caseGap * 2), usb2Z + (caseGap * 2) + (usb2PlugZAdjust * 2) ]);   
          
-    // posts
+                // posts
+                translate([+caseGap, +caseGap, +caseGap])
+                    union() {
+                        translate([ holeFromSide + holeRadius, pcbY - holeRadius - holeFromTop, -pcbZ / 2 ])
+                            cylinder(pcbZ * holeZ, holeRadius - caseGap, holeRadius - caseGap);
 
-          translate([+caseGap, +caseGap, +caseGap])
-            union() {
-            translate([ holeFromSide + holeRadius, pcbY - holeRadius - holeFromTop, -pcbZ / 2 ])
-                cylinder(pcbZ * holeZ, holeRadius - caseGap, holeRadius - caseGap);
-    
-
-            translate([pcbX - ( holeFromSide + holeRadius), pcbY - holeRadius - holeFromTop, -pcbZ / 2 ])
-                cylinder(pcbZ * holeZ, holeRadius - caseGap, holeRadius - caseGap);
-            }
+                        translate([pcbX - ( holeFromSide + holeRadius), pcbY - holeRadius - holeFromTop, -pcbZ / 2 ])
+                            cylinder(pcbZ * holeZ, holeRadius - caseGap, holeRadius - caseGap);
+                    }
 
          
-        }
+            }
         
-        // designations
+        // designators
         translate([ pcbX - usb2Inset - (usb2X / 2), caseWG * 1.25, topZ + pcbZ ]) 
             cylinder(3, 1.25, 1.25);
         translate([ pcbX / 2, pcbY - (caseWG * 4), topZ + pcbZ ]) 
@@ -109,16 +107,16 @@ module top() {
         
     }
     
-    // posts   
+    // protruding post guides   
     translate([ holeFromSide + holeRadius, pcbY - holeRadius - holeFromTop, pcbZ + caseGap ])
         difference(){
-            cylinder(topZ - pcbZ - caseGap, holeRadius + (caseGap * 2), holeRadius + (caseGap * 2));
+            cylinder(topZ - pcbZ - caseGap, holeRadius + (caseGap * 8), holeRadius + (caseGap * 8));
             cylinder(topZ - pcbZ - caseGap, holeRadius + caseGap, holeRadius - caseGap);
         }
 
     translate([pcbX - ( holeFromSide + holeRadius), pcbY - holeRadius - holeFromTop, pcbZ + caseGap ])
         difference(){
-            cylinder(topZ - pcbZ - caseGap, holeRadius + (caseGap * 2), holeRadius + (caseGap * 2));
+            cylinder(topZ - pcbZ - caseGap, holeRadius + (caseGap * 8), holeRadius + (caseGap * 8));
             cylinder(topZ - pcbZ - caseGap, holeRadius + caseGap, holeRadius - caseGap);
         }
 
